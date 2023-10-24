@@ -133,7 +133,7 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
     }
 
     private static void logStatsSummary(DescriptiveStatistics stat, String prefix) {
-        log.info("{} RPS Sketch Quantiles -- Min: {}, 25th: {}, 50th: {}, 75th: {}, 99th: {}, Max: {}",
+        log.info("{} - RPS Sketch Quantiles -- Min: {}, 25th: {}, 50th: {}, 75th: {}, 99th: {}, Max: {}",
                 prefix,
                 stat.getPercentile(0),
                 stat.getPercentile(25),
