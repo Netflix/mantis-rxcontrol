@@ -31,7 +31,7 @@ jobs:
           NETFLIX_OSS_REPO_USERNAME: ${{ secrets.ORG_NETFLIXOSS_USERNAME }}
           NETFLIX_OSS_REPO_PASSWORD: ${{ secrets.ORG_NETFLIXOSS_PASSWORD }}
         with:
-          arguments: build snapshot
+          arguments: --info --stacktrace build snapshot
       - name: Create PR Comment String
         run: |
           src=${GITHUB_WORKSPACE}/build/versions.txt
