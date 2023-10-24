@@ -104,6 +104,9 @@ pmd {
     ignoreFailures = true
 }
 
+def printAllReleasedArtifacts = project.tasks.create('printAllReleasedArtifacts')
+project.snapshot.configure { finalizedBy printAllReleasedArtifacts }
+
 project.plugins.withType(MavenPublishPlugin) {
     def printReleasedArtifact = project.tasks.create('printReleasedArtifact')
     printReleasedArtifact.doLast {
