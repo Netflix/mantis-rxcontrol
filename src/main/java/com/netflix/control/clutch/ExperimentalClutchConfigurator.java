@@ -108,7 +108,6 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
 
         return initialConfig
                 .concatWith(configs)
-                .distinctUntilChanged()
                 .doOnNext(__ -> log.info("RPS Sketch State: {}", sketches.get(Clutch.Metric.RPS)))
                 .doOnNext(__ -> {
                     logSketchSummary(sketches.get(Clutch.Metric.RPS));
@@ -117,6 +116,7 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
                     logStatsSummary(stats.get(Clutch.Metric.MEMORY), "Stats Memory metric: ");
                     logStatsSummary(stats.get(Clutch.Metric.NETWORK), "Stats Network metric: ");
                 })
+                .distinctUntilChanged()
                 .doOnNext(config -> log.info("Clutch switched to config: {}", config));
     }
 
