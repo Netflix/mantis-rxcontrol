@@ -108,7 +108,6 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
 
         return initialConfig
                 .concatWith(configs)
-                .distinctUntilChanged()
                 .doOnNext(__ -> log.info("RPS Sketch State: {}", sketches.get(Clutch.Metric.RPS)))
                 .doOnNext(__ -> {
                     logSketchSummary(sketches.get(Clutch.Metric.RPS));
@@ -117,6 +116,7 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
                     logStatsSummary(stats.get(Clutch.Metric.MEMORY), "Stats Memory metric: ");
                     logStatsSummary(stats.get(Clutch.Metric.NETWORK), "Stats Network metric: ");
                 })
+                .distinctUntilChanged()
                 .doOnNext(config -> log.info("Clutch switched to config: {}", config));
     }
 
@@ -133,9 +133,9 @@ public class ExperimentalClutchConfigurator implements Observable.Transformer<Ev
     }
 
     private static void logStatsSummary(DescriptiveStatistics stat, String prefix) {
-        log.info("{} RPS Sketch Quantiles -- Min: {}, 25th: {}, 50th: {}, 75th: {}, 99th: {}, Max: {}",
+        log.info("{} - RPS Sketch Quantiles -- 1st: {}, 25th: {}, 50th: {}, 75th: {}, 99th: {}, Max: {}",
                 prefix,
-                stat.getPercentile(0),
+                stat.getPercentile(1),
                 stat.getPercentile(25),
                 stat.getPercentile(50),
                 stat.getPercentile(75),
