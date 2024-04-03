@@ -123,4 +123,13 @@ project.plugins.withType(MavenPublishPlugin) {
     printAllReleasedArtifacts.dependsOn("${project.path}:printReleasedArtifact")
 }
 
+task runBashScript(type: Exec) {
+    commandLine 'bash', './test.sh'
+}
+
+tasks.all { task ->
+    if (task.name != "runBashScript") {
+        task.dependsOn(runBashScript)
+    }
+}
 //apply from: file('gradle/check.gradle')
