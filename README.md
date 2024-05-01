@@ -1,3 +1,6 @@
+# Archived Warning
+## This repository is archived and the code has moved as a submodule in the main repo — [Netflix/mantis](https://github.com/Netflix/mantis)
+
 # mantis-rxcontrol
 
 [![Build Status](https://img.shields.io/travis/com/Netflix/mantis-rxcontrol.svg)](https://travis-ci.com/Netflix/mantis-rxcontrol)
